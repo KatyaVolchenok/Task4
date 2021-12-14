@@ -117,7 +117,7 @@ public class SimpleEditor extends JFrame{
     public static void main(String[] args) {
         SimpleEditor simpleEditor = new SimpleEditor();
         
-        simpleEditor.appendText("I am a future programmer." + "\n"+ "I am learning the java language." + "\n" + "I really want to get a credit for this assignment.", false);
+        simpleEditor.appendText("I am learning the java language." + "\n" + "I really want to get a credit for this assignment.", false);
         System.out.println(simpleEditor.getText());
         
     }
