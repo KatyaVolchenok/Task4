@@ -36,7 +36,6 @@ public class SimpleEditor extends JFrame{
     setSize(500,500);
     setLocation(600,200);
     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-    createButtons();
     cp = getContentPane();   
     listener = new SimpleEditorListener(this);    
         
@@ -45,19 +44,12 @@ public class SimpleEditor extends JFrame{
         ButtonsPanel.setLayout(new FlowLayout());
         cp.add(ButtonsPanel, BorderLayout.NORTH);
         
-        JPanel fileButtonsPanel = new JPanel();
-        fileButtonsPanel.setLayout(new BorderLayout());
-        
-        JPanel editButtonsPanel = new JPanel();
-        editButtonsPanel.setLayout(new BorderLayout());
-          
-        ButtonsPanel.add(fileButtonsPanel);
-        ButtonsPanel.add(editButtonsPanel);
-        
-        fileButtonsPanel.add(commandButton[0], BorderLayout.WEST);
-        fileButtonsPanel.add(commandButton[1], BorderLayout.EAST);
-        editButtonsPanel.add(commandButton[2], BorderLayout.WEST);
-        editButtonsPanel.add(commandButton[3], BorderLayout.EAST);
+       
+        createButtons();
+        ButtonsPanel.add(commandButton[0], BorderLayout.WEST);
+        ButtonsPanel.add(commandButton[1], BorderLayout.EAST);
+        ButtonsPanel.add(commandButton[2], BorderLayout.WEST);
+        ButtonsPanel.add(commandButton[3], BorderLayout.EAST);
         
         text = new JTextArea();
         text.setBackground(Color.YELLOW);

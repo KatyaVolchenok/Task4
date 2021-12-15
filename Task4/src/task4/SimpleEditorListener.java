@@ -98,7 +98,7 @@ class SimpleEditorListener extends WindowAdapter implements ActionListener, Auto
     private void canselOperation() {
         file = null;
         editor.setJLabelText("INFO: creation new file. New File Name: ");
-        editor.appendText(" ", true);
+        editor.appendText("", false);
     }
 
     private void exitOperation() {
@@ -109,7 +109,7 @@ class SimpleEditorListener extends WindowAdapter implements ActionListener, Auto
             if (userOperation == 1) cancelOperation();
         }
         editor.dispose();
-        System.exit(0);
+        
     }
 
     @Override
