@@ -35,7 +35,6 @@ class SimpleEditorListener extends WindowAdapter implements ActionListener, Auto
         }
     }
 
-    
     @Override
     public void actionPerformed(ActionEvent ae) {
         switch(ae.getActionCommand()){
@@ -105,8 +104,7 @@ class SimpleEditorListener extends WindowAdapter implements ActionListener, Auto
             if (userOperation == 0) saveOperation();
             if (userOperation == 1) cancelOperation();
         }
-        editor.dispose();
-        
+        editor.dispose();  
     }
 
     @Override
