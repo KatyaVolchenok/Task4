@@ -35,10 +35,6 @@ class SimpleEditorListener extends WindowAdapter implements ActionListener, Auto
         }
     }
 
-    private void cancelOperation() {
-        if (file != null) saveOperation();
-     }
-    
     
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -52,7 +48,7 @@ class SimpleEditorListener extends WindowAdapter implements ActionListener, Auto
                 break;
             }
                    case "Cansel":{
-                    canselOperation(); 
+                    cancelOperation(); 
                     break;
                    }
                        case "Exit":{
@@ -77,8 +73,8 @@ class SimpleEditorListener extends WindowAdapter implements ActionListener, Auto
                     reader.read(buffer);
                     }catch (IOException e) {
                     JOptionPane.showMessageDialog(editor, "File read error");
-                }  
-            } editor.setJLabelText("INFO: creation new file. New File Name:" + file.getName());
+                }  editor.setJLabelText("INFO: creation new file. New File Name:" + file.getName());
+            } 
         }
     }
 
@@ -95,11 +91,12 @@ class SimpleEditorListener extends WindowAdapter implements ActionListener, Auto
         }
     }
 
-    private void canselOperation() {
+   private void cancelOperation() {
         file = null;
         editor.setJLabelText("INFO: creation new file. New File Name: ");
         editor.appendText("", false);
     }
+    
 
     private void exitOperation() {
         if (file != null) {
@@ -116,7 +113,7 @@ class SimpleEditorListener extends WindowAdapter implements ActionListener, Auto
     public void close() {
         if (file != null) saveOperation();
     }    
-    
+
 }
 
     
