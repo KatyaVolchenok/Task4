@@ -29,8 +29,8 @@ class SimpleEditorListener extends WindowAdapter implements ActionListener, Auto
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select file to save");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        int res = fileChooser.showSaveDialog(editor);
-        if (res == JFileChooser.APPROVE_OPTION) {
+        int result = fileChooser.showSaveDialog(editor);
+        if (result == JFileChooser.APPROVE_OPTION) {
             file = fileChooser.getSelectedFile();
         }
     }
@@ -46,7 +46,7 @@ class SimpleEditorListener extends WindowAdapter implements ActionListener, Auto
                 saveOperation(); 
                 break;
             }
-                   case "Cansel":{
+                   case "Cancel":{
                     cancelOperation(); 
                     break;
                    }
@@ -74,8 +74,24 @@ class SimpleEditorListener extends WindowAdapter implements ActionListener, Auto
                     JOptionPane.showMessageDialog(editor, "File read error");
                 }  editor.setJLabelText("INFO: creation new file. New File Name:" + file.getName());
             } 
-        }
+        }else if(file !=null){
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Select a file");
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            int res = fileChooser.showOpenDialog(editor);
+            
+            if (res == JFileChooser.APPROVE_OPTION) {
+                file = fileChooser.getSelectedFile();
+                
+                try (FileReader reader = new FileReader(file)) {
+                    char[] buffer = new char[1024];
+                    reader.read(buffer);
+                    }catch (IOException e) {
+                    JOptionPane.showMessageDialog(editor, "File read error");
     }
+            }
+    }
+        }
 
     private void saveOperation() {
        if (file == null) {
@@ -93,7 +109,7 @@ class SimpleEditorListener extends WindowAdapter implements ActionListener, Auto
    private void cancelOperation() {
         file = null;
         editor.setJLabelText("INFO: creation new file. New File Name: ");
-        editor.appendText("", false);
+        editor.appendText("", true);
     }
     
 
